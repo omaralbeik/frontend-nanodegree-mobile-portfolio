@@ -23,11 +23,11 @@ gulp.task('content', function() {
 
 gulp.task('scripts', function() {
 	gulp.src('./src/**/*.js')
-		// uncomment the next line to map js files
+		// comment the next line to disbale maping js files
 		.pipe(sourcemap.init({loadMaps: true}))
 		.pipe(jsmin())
 		.pipe(rename({suffix: '.min'}))
-		// uncomment the next line to map js files
+		// comment the next line to disbale maping js files
 		.pipe(sourcemap.write())
 		.pipe(gulp.dest('./dist'))
 		.pipe(reload({stream: true}))
