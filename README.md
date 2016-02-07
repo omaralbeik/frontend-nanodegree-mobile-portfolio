@@ -52,6 +52,6 @@ type gulp to run all task required to produce the code, and then type gulp serve
 + moved DOM elements selection methods outside loops where possible
 + changed changePizzaSizes(size) function, that all calculations occures outside the for loop.
 + reduce pizzas count from addEventListener to actual number of pizzas.
-+
++ declaring the elem variable (var elem;) outside the loop will prevent it from being created every time the loop is executed. (main.js - line: 564)
 
 

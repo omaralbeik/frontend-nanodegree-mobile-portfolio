@@ -562,8 +562,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var movingPizzas = document.getElementById("movingPizzas1");
   // by reducing the number from 200 to pizzas (approx: 18) the website looks better and works faster
-  var elem = document.createElement('img');
+  var elem; // Declaring the elem variable (var elem;) outside the loop will prevent it from being created every time the loop is executed.
   for (var i = 0; i < pizzas; i++) {
+    elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza-thumb.png";
     elem.style.height = "100px";
