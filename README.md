@@ -8,15 +8,15 @@ http://omaralbeik.com/udacity/frontend/p4
 
 ### Getting started
 #### 1. Download the entire project zipped file from the repository:
-https://github.com/omaralbeik/frontend-nanodegree-website-performance-optimization
+##### https://github.com/omaralbeik/frontend-nanodegree-website-performance-optimization
 
 #### 2. install Node.js and npm if not installed in your device:
-https://docs.npmjs.com/getting-started/installing-node
+##### https://docs.npmjs.com/getting-started/installing-node
 
 #### 3. move to project directory and install npm and gulp
 
   ``` bash
-  $> cd /path/to/your-project-folder (change this to project directory)
+  $> cd /project_path (change this to project directory)
   $> npm install
   $> npm install gulp
   ```
