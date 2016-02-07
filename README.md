@@ -24,9 +24,11 @@ https://docs.npmjs.com/getting-started/installing-node
   ```
 
 #### 4. run project
+type gulp to run all task required to produce the code, and then type gulp serve to open the produced code:
 
   ``` bash
   $> gulp
+  $> gulp serve
   ```
 
 ### Changes has been made to optimize the website:

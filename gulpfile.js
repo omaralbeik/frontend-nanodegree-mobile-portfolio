@@ -76,4 +76,4 @@ gulp.task('serve', function() {
 	gulp.watch('./src/**/*.css', ['styles']);
 });
 
-gulp.task('default', ['images', 'thumbs', 'content', 'scripts', 'styles', 'serve']);
+gulp.task('default', ['images', 'thumbs', 'scripts', 'styles', 'content']);

@@ -400,6 +400,7 @@ var pizzaElementGenerator = function(i) {
   return pizzaContainer;
 };
 
+"use strict";
 // resizePizzas(size) is called when the slider in the "Our Pizzas" section of the website moves.
 var resizePizzas = function(size) {
   window.performance.mark("mark_start_resize");   // User Timing API function
@@ -461,7 +462,7 @@ var resizePizzas = function(size) {
     var randomPizzaContainer = document.getElementsByClassName("randomPizzaContainer");
     var dx = determineDx(randomPizzaContainer[0], size);
     var newwidth = (randomPizzaContainer[0].offsetWidth + dx) + 'px';
-    for (var i = 0; i < randomPizzaContainer.length; i++) {
+    for (var i = 0, len = randomPizzaContainer.length; i < len ; i++) {
       randomPizzaContainer[i].style.width = newwidth;
     }
   }
@@ -534,7 +535,7 @@ function updatePositions() {
   var currentY = lastY;
   var items = document.getElementsByClassName('mover');
 
-  for (var i=0; i < items.length; i++) {
+  for (var i=0, len = items.length; i < len; i++) {
     items[i].style.transform = "translateX(" + 100 * Math.sin((currentY / 1250) + (i % 5)) + "px)";
   }
 
@@ -561,8 +562,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var movingPizzas = document.getElementById("movingPizzas1");
   // by reducing the number from 200 to pizzas (approx: 18) the website looks better and works faster
+  var elem = document.createElement('img');
   for (var i = 0; i < pizzas; i++) {
-    var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza-thumb.png";
     elem.style.height = "100px";
