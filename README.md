@@ -36,10 +36,10 @@ https://docs.npmjs.com/getting-started/installing-node
 + changed google font to use javascript.
 + media="print" is added to avoid blocking the rendering proccess.
 + moved scripts to footer, and added "async" to google analytics script since it's not required to load the page.
-+ minified HTML files using gulp-htmlmin.
-+ minified CSS files using gulp-minify-css.
-+ minified JS files using gulp-jsmin and used gulp-sourcemaps to map the files for easier debugging.
-+ compressed and created thumbnails images using gulp-imagemin and gulp-image-resize.
++ minified HTML files using [gulp-htmlmin](https://www.npmjs.com/package/gulp-htmlmin).
++ minified CSS files using [gulp-minify-css](https://www.npmjs.com/package/gulp-minify-css).
++ minified JS files using [gulp-jsmin](https://www.npmjs.com/package/gulp-jsmin) and used [gulp-sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps) to map the files for easier debugging.
++ compressed and created thumbnails images using [gulp-imagemin](https://www.npmjs.com/package/gulp-imagemin) and [gulp-image-resize](https://www.npmjs.com/package/gulp-image-resize).
 
 
 #### 2: Optimize pizza.html to run at 60 FPS
