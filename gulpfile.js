@@ -71,9 +71,9 @@ gulp.task('serve', function() {
 			baseDir: './dist/'
 		}
 	});
-	gulp.watch('./src/index.html', ['content']);
-	gulp.watch('./src/js/*.js', ['scripts']);
-	gulp.watch('./src/css/*.css', ['styles']);
+	gulp.watch('./src/**/*.html', ['content']);
+	gulp.watch('./src/**/*.js', ['scripts']);
+	gulp.watch('./src/**/*.css', ['styles']);
 });
 
 gulp.task('default', ['images', 'thumbs', 'content', 'scripts', 'styles', 'serve']);

@@ -43,6 +43,13 @@ https://docs.npmjs.com/getting-started/installing-node
 
 
 #### 2: Optimize pizza.html to run at 60 FPS
-+ capitalize methode is replaced by a CSS rule // main.js line 149
-+ limited use of document.querySelector() where possible
-+ moved DOM elements selection methods out of loops where possible
++ capitalize methode is replaced by a CSS rule (main.js line 149)
++ added backfact-visibility:hidden to .mover selector in styles.css tp repaint only moving pixels
++ used getElementsByClassName and getElementsById instead of querySelectorAll and querySelector for [faster DOM element selection](https://www.nczonline.net/blog/2010/09/28/why-is-getelementsbytagname-faster-that-queryselectorall/).
++ limited use of document.getElementsByClassName() and getElementsById() where possible
++ moved DOM elements selection methods outside loops where possible
++ changed changePizzaSizes(size) function, that all calculations occures outside the for loop.
++ reduce pizzas count from addEventListener to actual number of pizzas.
++
+
+
