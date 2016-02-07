@@ -17,18 +17,18 @@ const rename = require('gulp-rename');
 gulp.task('content', function() {
 	gulp.src('./src/**/*.html')
 		.pipe(htmlmin({collapseWhitespace: false}))
-		.pipe(gulp.dest('./dist/'))
+		.pipe(gulp.dest('dist'))
 		.pipe(reload({stream: true}))
 });
 
 gulp.task('scripts', function() {
 	gulp.src('./src/**/*.js')
 		// uncomment the next line to map js files
-		//.pipe(sourcemap.init({loadMaps: true}))
+		.pipe(sourcemap.init({loadMaps: true}))
 		.pipe(jsmin())
 		.pipe(rename({suffix: '.min'}))
 		// uncomment the next line to map js files
-		//.pipe(sourcemap.write())
+		.pipe(sourcemap.write())
 		.pipe(gulp.dest('./dist'))
 		.pipe(reload({stream: true}))
 });
@@ -36,8 +36,21 @@ gulp.task('scripts', function() {
 gulp.task('styles', function() {
 	gulp.src('src/**/*.css')
 		.pipe(minifyCSS())
-		.pipe(gulp.dest('./dist'))
+		.pipe(gulp.dest('dist'))
 		.pipe(reload({stream: true}))
+});
+
+gulp.task('thumbs', function() {
+    gulp.src(['src/**/*.png','src/**/*.jpg','src/**/*.gif','src/**/*.jpeg'])
+    	.pipe(imagemin({
+	    		progressive: true
+    		}))
+    	.pipe(imageresize({
+	    		width: 115,
+	    		upscale : false
+    		}))
+    	.pipe(rename({suffix: "-thumb"}))
+    	.pipe(gulp.dest('dist'));
 });
 
 gulp.task('images', function() {
@@ -46,7 +59,7 @@ gulp.task('images', function() {
 	    		progressive: true
     		}))
     	.pipe(imageresize({
-	    		width: 115,
+	    		width: 960,
 	    		upscale : false
     		}))
     	.pipe(gulp.dest('dist'));
@@ -63,4 +76,4 @@ gulp.task('serve', function() {
 	gulp.watch('./src/css/*.css', ['styles']);
 });
 
-gulp.task('default', ['images', 'content', 'scripts', 'styles', 'serve']);
+gulp.task('default', ['images', 'thumbs', 'content', 'scripts', 'styles', 'serve']);

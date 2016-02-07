@@ -8,7 +8,7 @@
     <title>Cameron Pittman: Portfolio</title>
 
     <!-- Hmm, what is the impact of web fonts on speed? Measure it...
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    I turned out that having google fonts as a script is much more efficente, but if javascript is not enabled on the client device he will not be ablt to run the website at the desired font, and since we are optimizing the website for speed, I assumed that every device has javascript and the most important is website responsive
     -->
 
     <script async type="text/javascript">
@@ -26,6 +26,7 @@
       })();
     </script>
 
+    <!-- well, adding the main css file inline helped the website sun mush faster, because we're not blocking the main rendering path fetching the seperated css and waiting for the response -->
     <style type="text/css">
       html {
       font-size: 100%;
@@ -78,7 +79,7 @@
       }
     </style>
 
-    <!-- media="print" is added to avoid blocking the rendering proccess  -->
+    <!-- media="print" is added to avoid blocking the rendering proccess since it's needed only for printing..  -->
     <link href="css/print.css" rel="stylesheet" media="print">
   </head>
 
@@ -114,7 +115,7 @@
           </li>
 
           <li>
-            <img style="width: 100px;" src="views/images/pizzeria.jpg">
+            <img style="width: 100px;" src="views/images/pizzeria-thumb.jpg">
             <a href="views/pizza.html">Cam's Pizzeria</a>
             <p>Who wants a performant pizza?</p>
           </li>

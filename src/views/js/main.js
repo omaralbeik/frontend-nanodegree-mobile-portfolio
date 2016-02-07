@@ -144,9 +144,11 @@ pizzaIngredients.crusts = [
 
 // Name generator pulled from http://saturdaykid.com/usernames/generator.html
 // Capitalizes first letter of each word
-String.prototype.capitalize = function() {
-  return this.charAt(0).toUpperCase() + this.slice(1);
-};
+
+// moved to CSS
+// String.prototype.capitalize = function() {
+//   return this.charAt(0).toUpperCase() + this.slice(1);
+// };
 
 // Pulls adjective out of array using random number sent from generator
 function getAdj(x){
@@ -291,7 +293,7 @@ function generator(adj, noun) {
   var nouns = getNoun(noun);
   var randomAdjective = parseInt(Math.random() * adjectives.length);
   var randomNoun = parseInt(Math.random() * nouns.length);
-  var name = "The " + adjectives[randomAdjective].capitalize() + " " + nouns[randomNoun].capitalize();
+  var name = "The " + adjectives[randomAdjective] + " " + nouns[randomNoun];
   return name;
 }
 
@@ -341,19 +343,19 @@ var makeRandomPizza = function() {
   var numberOfCheeses = Math.floor((Math.random() * 2));
 
   for (var i = 0; i < numberOfMeats; i++) {
-    pizza = pizza + ingredientItemizer(selectRandomMeat());
+    pizza += ingredientItemizer(selectRandomMeat());
   }
 
   for (var j = 0; j < numberOfNonMeats; j++) {
-    pizza = pizza + ingredientItemizer(selectRandomNonMeat());
+    pizza += ingredientItemizer(selectRandomNonMeat());
   }
 
   for (var k = 0; k < numberOfCheeses; k++) {
-    pizza = pizza + ingredientItemizer(selectRandomCheese());
+    pizza += ingredientItemizer(selectRandomCheese());
   }
 
-  pizza = pizza + ingredientItemizer(selectRandomSauce());
-  pizza = pizza + ingredientItemizer(selectRandomCrust());
+  pizza += ingredientItemizer(selectRandomSauce());
+  pizza += ingredientItemizer(selectRandomCrust());
 
   return pizza;
 };
@@ -402,17 +404,20 @@ var pizzaElementGenerator = function(i) {
 var resizePizzas = function(size) {
   window.performance.mark("mark_start_resize");   // User Timing API function
 
+  // document.querySelector is used once, then its innerHTML property changed
+  var pizzaSize  = document.querySelector("#pizzaSize");
+
   // Changes the value for the size of the pizza above the slider
   function changeSliderLabel(size) {
     switch(size) {
       case "1":
-        document.querySelector("#pizzaSize").innerHTML = "Small";
+        pizzaSize.innerHTML = "Small";
         return;
       case "2":
-        document.querySelector("#pizzaSize").innerHTML = "Medium";
+        pizzaSize.innerHTML = "Medium";
         return;
       case "3":
-        document.querySelector("#pizzaSize").innerHTML = "Large";
+        pizzaSize.innerHTML = "Large";
         return;
       default:
         console.log("bug in changeSliderLabel");
@@ -450,10 +455,11 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-      var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+    var randomPizzaContainer = document.querySelectorAll(".randomPizzaContainer");
+    for (var i = 0; i < randomPizzaContainer.length; i++) {
+      var dx = determineDx(randomPizzaContainer[i], size);
+      var newwidth = (randomPizzaContainer[i].offsetWidth + dx) + 'px';
+      randomPizzaContainer[i].style.width = newwidth;
     }
   }
 
@@ -528,7 +534,7 @@ document.addEventListener('DOMContentLoaded', function() {
   for (var i = 0; i < 200; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
-    elem.src = "images/pizza.png";
+    elem.src = "images/pizza-thumb.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
